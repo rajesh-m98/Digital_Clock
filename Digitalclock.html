@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: #b2b1b1;
+            /* margin: 0; */
+            
+        }
+
+        .clock {
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        #table {
+            border: none;
+            display: block;
+            position: absolute;
+            background-color: #000000;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 0px;
+            margin-left: 45px;
+            width: 325px;
+        }
+
+        .outlinebox {
+            border: 1px solid black;
+            width: 420px;
+            height: 220px;
+            margin-top: 150px;
+            text-align: center;
+            border-radius: 5px;
+            background-color: rgb(0, 170, 255);
+            box-shadow: 5px 5px 5px rgb(255, 0, 0);
+            
+        }
+
+        .time {
+            font-weight: bold;
+            color: black;
+        }
+
+        .hours, .minutes, .seconds {
+            transition: color 0.5s;
+            border: none;
+            background-color: rgb(0, 102, 255);
+            color: white;
+            font-weight: bold;
+            font-size: 25px;
+            width: 60px;
+            height: 35px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .seconds {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="outlinebox">
+            <p class="time">T I M E</p>
+        <table cellspacing="20px" id="table">
+            <tr>
+                <td>Hours</td>
+                <td>Minutes</td>
+                <td>Seconds</td>
+            </tr>
+            <tr>
+                <td><button class="hours">00</button></td>
+                <td><button class="minutes">00</button></td>
+                <td><button class="seconds">00</button></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours());
+        const minutes = String(now.getMinutes());
+        const seconds = String(now.getSeconds());
+
+        document.querySelector('.hours').textContent = hours-12;
+        document.querySelector('.minutes').textContent = minutes;
+        document.querySelector('.seconds').textContent = seconds;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
